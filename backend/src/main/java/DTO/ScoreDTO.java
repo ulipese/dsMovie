@@ -1,35 +1,40 @@
-package entities;
-import jakarta.persistence.*;
+package DTO;
 
-import java.util.HashSet;
-import java.util.Set;
+import entities.Movie;
+import entities.User;
 
-@Entity
-@Table(name = "tb_movie")
-public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ScoreDTO {
     private Long id;
     private String title;
     private Double score;
     private Integer count;
     private String image;
+    private String email;
+    private User user;
 
-    @OneToMany(mappedBy = "id.movie")
-    private Set<Score> scores = new HashSet<>();
+    // Construtor padrão
+    public ScoreDTO() {}
 
-    public Movie() {
-
-    }
-
-    public Movie(Long id, String title, Double score, Integer count, String image) {
+    // Construtor com parâmetros
+    public ScoreDTO(Long id, String title, Double score, Integer count, String image, String email) {
         this.id = id;
         this.title = title;
         this.score = score;
         this.count = count;
         this.image = image;
+        this.email = email;
     }
 
+    // Construtor que recebe uma entidade Movie
+    public ScoreDTO(Movie movie) {
+        this.id = movie.getId();
+        this.title = movie.getTitle();
+        this.score = movie.getScore();
+        this.count = movie.getCount();
+        this.image = movie.getImage();
+    }
+
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -70,7 +75,10 @@ public class Movie {
         this.image = image;
     }
 
-    public Set<Score> getScores() {
-        return scores;
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

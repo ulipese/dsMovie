@@ -13,16 +13,16 @@ import org.springframework.stereotype.Service;
 public class MovieService {
 
     @Autowired
-    private MovieRepository repository;
+    private MovieRepository movieRepository;
 
     public Page<MovieDTO> findAll(Pageable pageable) {
-        Page<Movie> result = repository.findAll(pageable);
+        Page<Movie> result = movieRepository.findAll(pageable);
         Page<MovieDTO> page = result.map(movie -> new MovieDTO(movie));
         return page;
     }
 
     public MovieDTO findById(Long id) {
-        Movie result = repository.findById(id).get();
+        Movie result = movieRepository.findById(id).get();
         MovieDTO movieDTO = new MovieDTO(result);
         return movieDTO;
     }
