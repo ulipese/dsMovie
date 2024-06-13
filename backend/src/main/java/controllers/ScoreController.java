@@ -11,6 +11,7 @@ import services.ScoreService;
 
 @RestController
 @RequestMapping(value = "/scores")
+@CrossOrigin
 public class ScoreController {
     @Autowired
     private ScoreService scoreService;

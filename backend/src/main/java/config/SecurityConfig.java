@@ -12,21 +12,7 @@ import java.util.Arrays;
 
 
 @Configuration
-//@EnableWebSecurity
 public class SecurityConfig {
-
-    @Autowired
-    private Environment env;
-
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests((req) -> req
-//                        .anyRequest().permitAll()
-//                )
-//                .httpBasic(withDefaults());
-//        return http.build();
-//    }
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
